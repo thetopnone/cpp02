@@ -12,11 +12,23 @@
 
 #include <iostream>
 #include "Fixed.hpp"
+#include <cmath>
 
 Fixed::Fixed()
 	:_value(0)
 {
 	std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::Fixed(const int val)
+{
+	std::cout << "Int constructor called" << std::endl;
+	_value = val << _fractionalBits;
+}
+
+Fixed::Fixed(const float val){
+	std::cout << "Float constructor called" << std::endl;
+	_value = static_cast<int>(roundf(val * (1 << _fractionalBits)));
 }
 
 Fixed::Fixed(const Fixed& other)
@@ -35,6 +47,10 @@ Fixed& Fixed::operator=(const Fixed& other){
 	return (*this);
 }
 
+std::ostream &operator<<(std::ostream& out, const Fixed &num){
+	return out << num.toFloat();
+}
+
 Fixed::~Fixed(){
 	std::cout << "Destructor called" << std::endl;
 }
@@ -46,4 +62,12 @@ int	Fixed::getRawBits( void ) const{
 
 void Fixed::setRawBits(int const raw){
 	_value = raw;
+}
+
+float Fixed::toFloat( void ) const{
+	return(static_cast<float>(_value) / (1 << _fractionalBits));
+}
+
+int	Fixed::toInt( void ) const{
+	return(static_cast<int>(_value) / (1 << _fractionalBits));
 }
