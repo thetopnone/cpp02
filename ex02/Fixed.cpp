@@ -86,7 +86,7 @@ Fixed Fixed::operator+(const Fixed& other){
 Fixed Fixed::operator-(const Fixed& other){
 	Fixed ret;
 	
-	ret.setRawBits(this->_value + other._value);
+	ret.setRawBits(this->_value - other._value);
 	return (ret);
 }
 

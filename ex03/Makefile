@@ -1,8 +1,8 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJS = $(patsubst %.cpp,objs/%.o,$(SRCS))
-NAME = fpnum
+NAME = bsp
 
 all: $(NAME)
 
@@ -14,7 +14,7 @@ objs/%.o : %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean: 
-	@rm -rf $(OBJS)
+	@rm -rf objs
 
 fclean: clean
 	@rm -rf $(NAME)

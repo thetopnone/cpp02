@@ -10,17 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Point.hpp"
+
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 int main( void ) {
-Fixed a;
-Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-std::cout << a << std::endl;
-std::cout << ++a << std::endl;
-std::cout << a << std::endl;
-std::cout << a++ << std::endl;
-std::cout << a << std::endl;
-std::cout << b << std::endl;
-std::cout << Fixed::max( a, b ) << std::endl;
+Point a(0, 0);
+Point b(3, 1);
+Point c(4, -1);
+
+{
+	Point point(1, 0);
+	std::cout << "The point " << point << " is: ";
+	if (bsp(a,b,c,point) == true){
+		std::cout << "Inside" << std::endl;
+	}
+	else
+		std::cout << "Outside" << std::endl;
+}
+{
+	Point point(0, 0);
+	std::cout << "The point " << point << " is: ";
+	if (bsp(a,b,c,point) == true){
+		std::cout << "Inside" << std::endl;
+	}
+	else
+		std::cout << "Outside" << std::endl;
+}
+{
+	Point point(0.5, 2);
+	std::cout << "The point " << point << " is: ";
+	if (bsp(a,b,c,point) == true){
+		std::cout << "Inside" << std::endl;
+	}
+	else
+		std::cout << "Outside" << std::endl;
+}
 return (0);
 }
