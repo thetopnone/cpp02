@@ -98,7 +98,7 @@ Fixed Fixed::operator*(const Fixed& other){
 	if (result >= 0)
 		result += (1LL << (_fractionalBits - 1));
 	else
-		result -= + (1LL << (_fractionalBits - 1));
+		result -= (1LL << (_fractionalBits - 1));
 	ret.setRawBits(static_cast<int>(result >> _fractionalBits));
 	return (ret);
 }
@@ -107,7 +107,7 @@ Fixed Fixed::operator/(const Fixed& other){
 	Fixed ret;
 	int64_t result;
 
-	result = (static_cast<int64_t>(this->_value) << _fractionalBits) / other._value;
+	result = (static_cast<int64_t>(this->_value) << _fractionalBits) / static_cast<int64_t>(other._value);
 	if (result >= 0)
 		result += (1LL << (_fractionalBits - 1));
 	else
