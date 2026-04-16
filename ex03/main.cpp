@@ -16,7 +16,7 @@ bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 int main( void ) {
 Point a(0, 0);
-Point b(3, 1);
+Point b(0, 1);
 Point c(4, -1);
 
 {
@@ -29,7 +29,7 @@ Point c(4, -1);
 		std::cout << "Outside" << std::endl;
 }
 {
-	Point point(0, 0);
+	Point point(4, -1);
 	std::cout << "The point " << point << " is: ";
 	if (bsp(a,b,c,point) == true){
 		std::cout << "Inside" << std::endl;

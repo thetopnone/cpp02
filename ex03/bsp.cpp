@@ -42,6 +42,11 @@ bool bsp( Point const a, Point const b, Point const c, Point const point){
 	Point	_bc = pointVector(b,c);
 	Point	_ca = pointVector(c,a);
 
+	if (determinant(_ab,_bc) == Fixed(0)){
+		std::cout << "\nProvided Points do not form a triangle!!!\n" << std::endl;
+		return(false);
+	}
+
 	Point	_ap = pointVector(a,point);
 	Point	_bp = pointVector(b,point);
 	Point	_cp = pointVector(c,point);
